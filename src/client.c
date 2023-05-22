@@ -5,7 +5,29 @@
 #include <string.h>
 
 void sendTextToServer(pid_t serverPID, const char* text) {
-    kill(serverPID, SIGUSR1);
+    char singleChar;
+    int textIndex;
+    int bitIndex;
+    int textLength;
+
+    textIndex = 0;
+    textLength = strlen(text);
+    while (textIndex < textLength) {
+        singleChar = text[textIndex];
+        bitIndex = 7;
+        while (bitIndex >= 0) {
+            if (singleChar & 1) {
+                kill(serverPID, SIGUSR1);
+            } else {
+                kill(serverPID, SIGUSR2);
+            }
+            singleChar = singleChar >> 1;
+            bitIndex--;
+            usleep(1000);
+        }
+        textIndex++;
+    }
+    printf("Sent Complete\n");
 }
 
 int main(int argc, char *argv[]) {
@@ -24,7 +46,10 @@ int main(int argc, char *argv[]) {
     text = strcpy(text, argv[2]);
 
     sendTextToServer(server_pid, text);
-    
 
+    while (1) {
+        pause();
+    }
+    
     return 0;
 }
