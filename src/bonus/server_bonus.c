@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tharunthornmusik <tharunthornmusik@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:29:13 by tharunthorn       #+#    #+#             */
-/*   Updated: 2023/05/23 13:09:08 by tharunthorn      ###   ########.fr       */
+/*   Updated: 2023/05/23 13:30:18 by tharunthorn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
-#include "../lib/libFt/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
+#include "../../lib/libFt/libft.h"
+#include "../../lib/ft_printf/include/ft_printf.h"
 
 
 
