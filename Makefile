@@ -46,12 +46,12 @@ clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
 	$(MAKE) clean -C $(FT_PRINTF_DIR)
 	$(RM) $(SV_OBJS) $(CLIENT_OBJS)
-	$(RM) $(SV_BONUS_OBJS) $(CLIENT_BONUS_OBJS) 
+	$(RM) $(SV_BONUS_OBJS) $(CLIENT_BONUS_OBJS)
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
 	$(MAKE) fclean -C $(FT_PRINTF_DIR)
 	$(RM) $(SERVER) $(CLIENT)
-	$(RM) $(SV_BONUS_OBJS) $(CLIENT_BONUS_OBJS) 
+	$(RM) $(SERVER_BONUS) $(CLIENT_BONUS)
 re: fclean all
 
 bonus: $(SERVER_BONUS) $(CLIENT_BONUS)

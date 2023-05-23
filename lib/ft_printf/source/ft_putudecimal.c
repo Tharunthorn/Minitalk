@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putudecimal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thmusik <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tharunthornmusik <tharunthornmusik@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 22:38:46 by thmusik           #+#    #+#             */
-/*   Updated: 2022/11/13 13:53:47 by thmusik          ###   ########.fr       */
+/*   Updated: 2023/05/23 14:52:41 by tharunthorn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ unsigned int	ft_uintlen(unsigned	int n)
 	return (len);
 }
 
-char *unsigned_itoa(unsigned int n)
+char	*unsigned_itoa(unsigned int n)
 {
 	char	*str;
 	int		len;
