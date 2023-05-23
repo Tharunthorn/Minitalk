@@ -6,7 +6,7 @@
 /*   By: tharunthornmusik <tharunthornmusik@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 12:29:04 by tharunthorn       #+#    #+#             */
-/*   Updated: 2023/05/23 13:30:30 by tharunthorn      ###   ########.fr       */
+/*   Updated: 2023/05/23 13:43:15 by tharunthorn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 #include "../../lib/libFt/libft.h"
 #include "../../lib/ft_printf/include/ft_printf.h"
 
-void sendTextToServer(pid_t serverPID, const char* text) {
-    char singleChar;
-    int textIndex;
-    int bitIndex;
-    int textLength;
+void send_text_to_server(pid_t server_pid, const char* text) {
+    char single_char;
+    int text_index;
+    int bit_index;
+    int text_length;
 
-    textIndex = 0;
-    textLength = ft_strlen(text);
-    while (textIndex < textLength) {
-        singleChar = text[textIndex];
-        bitIndex = 7;
-        while (bitIndex >= 0) {
-            if (singleChar & 1) {
-                kill(serverPID, SIGUSR1);
+    text_index = 0;
+    text_length = ft_strlen(text);
+    while (text_index < text_length) {
+        single_char = text[text_index];
+        bit_index = 7;
+        while (bit_index >= 0) {
+            if (single_char & 1) {
+                kill(server_pid, SIGUSR1);
             } else {
-                kill(serverPID, SIGUSR2);
+                kill(server_pid, SIGUSR2);
             }
-            singleChar = singleChar >> 1;
-            bitIndex--;
+            single_char = single_char >> 1;
+            bit_index--;
             usleep(1000);
         }
-        textIndex++;
+        text_index++;
     }
 }
 
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
     text = (char *)malloc(text_len + 1);
     ft_strlcpy(text, argv[2], text_len + 1);
 
-    sendTextToServer(server_pid, text);
+    send_text_to_server(server_pid, text);
 
     while (1) {
         pause();
