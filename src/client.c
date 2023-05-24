@@ -6,13 +6,12 @@
 /*   By: tharunthornmusik <tharunthornmusik@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:42:05 by tharunthorn       #+#    #+#             */
-/*   Updated: 2023/05/23 14:43:04 by tharunthorn      ###   ########.fr       */
+/*   Updated: 2023/05/24 16:40:06 by tharunthorn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "../lib/libFt/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
 
 void	send_text_to_server(pid_t server_pid, const char *text)
 {
@@ -49,7 +48,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		ft_printf("Usage: %s <pid> <messagel>\n", argv[0]);
+		write(1, "Invalid Arguments\n", 18);
 		exit(EXIT_FAILURE);
 	}
 	server_pid = ft_atoi(argv[1]);

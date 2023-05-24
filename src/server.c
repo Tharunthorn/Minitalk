@@ -6,13 +6,13 @@
 /*   By: tharunthornmusik <tharunthornmusik@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:46:12 by tharunthorn       #+#    #+#             */
-/*   Updated: 2023/05/23 14:58:22 by tharunthorn      ###   ########.fr       */
+/*   Updated: 2023/05/24 16:47:28 by tharunthorn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 #include "../lib/libFt/libft.h"
-#include "../lib/ft_printf/include/ft_printf.h"
+
 
 void	signal_handler(int sig_num)
 {
@@ -38,7 +38,9 @@ int	main(void)
 	pid_t	my_pid;
 
 	my_pid = getpid();
-	ft_printf("PID: %d\n", my_pid);
+	write(1, "PID: ", 5);
+	ft_putnbr_fd(my_pid, 1);
+	write(1, "\n", 1);
 	signal(SIGUSR1, signal_handler);
 	signal(SIGUSR2, signal_handler);
 	while (1)

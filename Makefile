@@ -3,10 +3,8 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 LIBFT_DIR = lib/libft
-FT_PRINTF_DIR = lib/ft_printf
 
 LIBFT = $(LIBFT_DIR)/libft.a
-FT_PRINTF = $(FT_PRINTF_DIR)/libftprintf.a
 
 SERVER = server
 CLIENT = client
@@ -30,26 +28,22 @@ all: $(SERVER) $(CLIENT)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
-$(FT_PRINTF):
-	$(MAKE) -C $(FT_PRINTF_DIR)
-$(SERVER): $(SV_OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(SV_OBJS) $(LIBFT) $(FT_PRINTF) -o server
-$(CLIENT): $(CLIENT_OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT) $(FT_PRINTF) -o client
+$(SERVER): $(SV_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(SV_OBJS) $(LIBFT)  -o server
+$(CLIENT): $(CLIENT_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT)  -o client
 
-$(SERVER_BONUS): $(SV_BONUS_OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(SV_BONUS_OBJS) $(LIBFT) $(FT_PRINTF) -o server_bonus
-$(CLIENT_BONUS): $(CLIENT_BONUS_OBJS) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(CLIENT_BONUS_OBJS) $(LIBFT) $(FT_PRINTF) -o client_bonus
+$(SERVER_BONUS): $(SV_BONUS_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(SV_BONUS_OBJS) $(LIBFT)  -o server_bonus
+$(CLIENT_BONUS): $(CLIENT_BONUS_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(CLIENT_BONUS_OBJS) $(LIBFT)  -o client_bonus
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
-	$(MAKE) clean -C $(FT_PRINTF_DIR)
 	$(RM) $(SV_OBJS) $(CLIENT_OBJS)
 	$(RM) $(SV_BONUS_OBJS) $(CLIENT_BONUS_OBJS)
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
-	$(MAKE) fclean -C $(FT_PRINTF_DIR)
 	$(RM) $(SERVER) $(CLIENT)
 	$(RM) $(SERVER_BONUS) $(CLIENT_BONUS)
 re: fclean all
